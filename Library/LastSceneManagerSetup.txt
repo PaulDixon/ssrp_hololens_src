@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_ssrp/_scenes/ssrp_empty.unity
+- path: Assets/_ssrp/_scenes/ssrp_complete.unity
   isLoaded: 1
   isActive: 1

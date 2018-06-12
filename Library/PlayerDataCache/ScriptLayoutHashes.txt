@@ -1,8 +1,8 @@
 Metro
 PlayerPath?
-C:/Users/Dixon/Documents/GitHub/hololens_deploy
+C:/Users/Dixon/Documents/GitHub/hololens_final_deploy
 SceneListBegin?
-Assets/_ssrp/_scenes/ssrp_empty.unity
+Assets/_ssrp/_scenes/ssrp_complete.unity
 SceneListEnd?
 7abde016883951c4ca4e7c44ce6adb2c Assembly-CSharp.dll:HoloToolkit.Unity.SceneLauncher
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.UX.BoundingBoxGizmoHandle
@@ -357,6 +357,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 d7abe84a44f6aed10aea7132d8e34f79 Assembly-CSharp.dll:HoloToolkit.Unity.Boundary.SceneContentAdjuster
 79ad4dc62c026da5703820bbbb4ce163 Assembly-CSharp.dll:HoloToolkit.UX.ToolTips.ToolTipBackgroundMesh
 2dbfd4f7836c7f6a79e17be5f4bf7969 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.WaypointCircuit
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.TapResponder
 2441c717df6a93b8298ef207ebc9334e Assembly-CSharp.dll:.BinaryStateIcon
 027647ed3c077d2129efe22b6bd62a79 Assembly-CSharp.dll:HoloToolkit.Unity.AudioEmitter
 1193c002177eba10253315561d91d3d2 Assembly-CSharp.dll:HoloToolkit.Unity.UX.Parabola
@@ -403,6 +404,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 ecce978abee70e7852a63184a5b0520d Assembly-CSharp.dll:HoloToolkit.Unity.DebugPanelControllerInfo
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.ApplicationViewManager
 5487efccb06583184c3fca5a644d0e7c Assembly-CSharp.dll:HoloToolkit.Unity.SolverHandler
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.GazeResponder
 e8ba2e453aff9cf5487189ad115348c5 Assembly-CSharp.dll:HoloToolkit.Unity.UX.DistorterSphere
 1acb71d80bb991db1606a38c1ed91aec Assembly-CSharp.dll:.SSRP_entity_manager
 4359ad7c5b190e7c5fd06955c3d79519 Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.SpeechInputHandler
@@ -524,5 +526,3 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.TapResponder
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.Tests.GazeResponder

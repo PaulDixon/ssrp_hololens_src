@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4472913449826638}
   - component: {fileID: 114602475356911158}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SSRP_Target_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4888406286417244}
   - component: {fileID: 114396344814406384}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SSRP_entity_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783529537060840}
   - component: {fileID: 114404616930874840}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SSRP_connection_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,13 +85,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4324773968691246}
   - component: {fileID: 114164948258558958}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: SSRP_interaction_manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4324773968691246
 Transform:
   m_ObjectHideFlags: 1
@@ -124,8 +124,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400611589991998}
-  m_LocalRotation: {x: -0, y: -0.24784453, z: -0, w: 0.9687998}
-  m_LocalPosition: {x: 5, y: 1, z: -8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4324773968691246}
