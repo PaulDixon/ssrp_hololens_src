@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/ssrp.unity
+  - enabled: 0
+    path: Assets/_ssrp/_scenes/hololens_centered.unity
+    guid: 6fc2ed8cbc5c8f34c9558e9bd6d5a1c7
+  - enabled: 0
+    path: Assets/_ssrp/_scenes/ssrp_empty.unity
     guid: dda4abbf1d7eb714aaf5eb0b9f592b42
