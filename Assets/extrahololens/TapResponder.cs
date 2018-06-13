@@ -12,8 +12,11 @@ namespace HoloToolkit.Unity.InputModule.Tests
     /// </summary>
     public class TapResponder : MonoBehaviour, IInputClickHandler
     {
+        PersistantManager boss;// = PersistantManager.Instance;
+
         public void OnInputClicked(InputClickedEventData eventData)
         {
+            boss = PersistantManager.Instance;
             // Increase the scale of the object just as a response.
             //gameObject.transform.localScale += 0.05f * gameObject.transform.localScale;
             try { 
@@ -23,7 +26,7 @@ namespace HoloToolkit.Unity.InputModule.Tests
             }
             catch
             {
-
+                boss.hud.addText("Tap_linkage broken ");
             }
         }
     }

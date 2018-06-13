@@ -1,6 +1,6 @@
 Metro
 PlayerPath?
-C:/Users/Dixon/Documents/GitHub/hololens_final_deploy
+C:/Users/vr-user/Documents/pd_dev/GitHubRepo/dep
 SceneListBegin?
 Assets/_ssrp/_scenes/ssrp_complete.unity
 SceneListEnd?
@@ -410,7 +410,7 @@ e8ba2e453aff9cf5487189ad115348c5 Assembly-CSharp.dll:HoloToolkit.Unity.UX.Distor
 4359ad7c5b190e7c5fd06955c3d79519 Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.SpeechInputHandler
 8644983781391a1a0c05940eaa565fef Assembly-CSharp.dll:HoloToolkit.Unity.SpatialMapping.RemoteMeshSource
 bf32e4c941fcd4078b3b322bed30732a Assembly-CSharp.dll:HoloToolkit.Unity.UX.BoundingBoxGizmoShell
-e2a3b6c800338e164e147ab6ec38bf7a Assembly-CSharp.dll:.SSRP_reader
+0ce2f143b741303e52c66e393fb98fd4 Assembly-CSharp.dll:.SSRP_reader
 ac80fcaace31dfd3ed996cbb813a4263 Assembly-CSharp.dll:HoloToolkit.Unity.Buttons.CompoundButtonMesh
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 4c81c8962ca9c4dfc6f330235be37fe9 Assembly-CSharp.dll:HoloToolkit.Sharing.Utilities.DirectPairing
@@ -436,6 +436,7 @@ da88126cdf11ba2e81311bc5c64d91f3 Assembly-CSharp.dll:HoloToolkit.Unity.InputModu
 f1dddc522eb4451a473352e2116e6cff Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.GamePadHandlerBase
 818cc923a72dcfe3a52a0eb281828393 Assembly-CSharp.dll:HoloToolkit.Unity.HeadsUpDirectionIndicator
 49febca92ce435f92504a89f23fd84ca Assembly-CSharp.dll:HoloToolkit.UI.Keyboard.KeyboardKeyFunc
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.renderMe
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:HoloToolkit.Unity.UsabilityScaler
 77fc19578ec6b3c5048a9606add67fc9 Assembly-CSharp.dll:HoloToolkit.Unity.UX.LineStripMesh
 843980f90e915da29bb6f3eadb5d5d57 Assembly-CSharp.dll:HoloToolkit.Unity.SimpleTagalong

@@ -63,18 +63,14 @@ public class SSRP_target_controller : MonoBehaviour
             contextElement_previousList = contextElement_currentList;
             contextElement_currentList = _list;
 
-            if (contextElement_previousList != contextElement_currentList)
+            if (contextElement_currentList != null && contextElement_previousList != contextElement_currentList)
             {
-                if (contextElement_currentList != null)
-                {
-
-                    boss.hud.addText("rendering Imported targets : " + contextElement_currentList.Count);
+                   boss.hud.addText("rendering Imported targets : " + contextElement_currentList.Count);
                     // Vuforia 6.2+
                     VuforiaARController.Instance.RegisterVuforiaStartedCallback(LoadDataSet);
-                }
-
             }
         }
+        
     }
 
 
@@ -183,17 +179,17 @@ public class SSRP_target_controller : MonoBehaviour
                             // instantiate augmentation object and parent to trackable
                             GameObject aug_anchor = (GameObject)GameObject.Instantiate(augmentationAnchor);
                             aug_anchor.transform.SetParent(tb.gameObject.transform);
-                            aug_anchor.transform.localPosition = Vector3.zero;
-                            aug_anchor.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
-                            aug_anchor.transform.localScale = new Vector3(0.275f, 0.275f, 0.275f);
+                            //aug_anchor.transform.localPosition = Vector3.zero;
+                            //aug_anchor.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+                            //aug_anchor.transform.localScale = new Vector3(0.275f, 0.275f, 0.275f);
 
                             // instantiate augmentation object and parent to trackable
                             GameObject aug_obj = (GameObject)GameObject.Instantiate(augmentationObject);
                             aug_obj.transform.SetParent(aug_anchor.transform);
 
-                            aug_obj.transform.localPosition = new Vector3(0f, 1.75f, 0f);
-                            aug_obj.transform.localRotation = Quaternion.identity;
-                            aug_obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+//                            aug_obj.transform.localPosition = new Vector3(0f, 1.75f, 0f);
+ //                           aug_obj.transform.localRotation = Quaternion.identity;
+  //                          aug_obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 
                             SSRP_context_element_controller aug_obj_script = aug_obj.GetComponent<SSRP_context_element_controller>();
                             if (aug_obj_script != null)
@@ -214,18 +210,21 @@ public class SSRP_target_controller : MonoBehaviour
                     {
 
                         boss.hud.addText(tb.TrackableName + " not found in contextResponse List");
+                        contextElement_currentList = null;
                     }
                 }
             }
             else
                 {
                 boss.hud.addText("contextResponse List was empty");
+                contextElement_currentList = null;
             }
         }
         else
         {
             //Debug.LogError("<color=yellow>Failed to load dataset: '" + dataSetName + "'</color>");
             boss.hud.addText("Failed to load dataset: '" + dataSetName + "'");
+            contextElement_currentList = null;
         }
     }
     // */

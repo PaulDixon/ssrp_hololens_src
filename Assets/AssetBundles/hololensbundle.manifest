@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 348957545
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2fce545851dc9babfd5f67fbcf50c004
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e8214c69729ed7b4e0f89bad6e44781a
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/power_on.png
+- Assets/Resources/power_off.png
+- Assets/Resources/wifi_on.png
+- Assets/Resources/Listening.png
+- Assets/Resources/Thinking.png
+- Assets/Resources/ssrp_response_ltu.txt
+- Assets/Resources/Sleeping.png
+- Assets/Resources/ssrp_response_nk.txt
+- Assets/Resources/wifi_off.png
+Dependencies: []

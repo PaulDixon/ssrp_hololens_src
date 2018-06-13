@@ -106,6 +106,18 @@ public class SSRP_contextResponse
 
     }
 
+    public Boolean isCorrupt()
+    {
+        Boolean isCorrupt = false;
+        if (statusCode.code == "" && statusCode.reasonPhrase == "")
+        {
+            isCorrupt = true;
+        }
+           
+        
+        return isCorrupt;
+    }
+
     public SSRP_StatusCode getStatus()
     {
         return statusCode;

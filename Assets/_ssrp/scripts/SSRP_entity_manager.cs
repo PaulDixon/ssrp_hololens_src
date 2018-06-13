@@ -61,8 +61,8 @@ public class SSRP_entity_manager : MonoBehaviour
 
             float lon = float.Parse(sLon);
             response.gpsPos = new Vector3(lat, lon);
-            //Debug.LogFormat("Paul Dixon TODO: fix your distance calculation!");
-            boss.hud.addText("Paul Dixon TODO: fix your distance calculation!");
+            
+            
             response.distToViewer = (double)Vector3.Distance(gpsPos, response.gpsPos);
 
             int loc = 0;
