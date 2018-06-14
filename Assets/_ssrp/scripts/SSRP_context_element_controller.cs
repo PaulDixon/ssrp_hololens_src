@@ -10,8 +10,9 @@ public class SSRP_context_element_controller : MonoBehaviour {
     public Text ui_type;
     public GameObject ui_isPattern;
     public Text ui_status;
-    private SSRP_StatusCode statusCode = new SSRP_StatusCode(); 
+    private SSRP_StatusCode statusCode = new SSRP_StatusCode();
     private bool canRenderText = false;
+    private bool canRenderScroll = false;
     public bool isClosed = true;
     public bool isPanel = false;
     public bool allowedToRender = false;
@@ -45,11 +46,11 @@ public class SSRP_context_element_controller : MonoBehaviour {
         testParentLink();
         testPrefabLink();
         try
-        { 
-        Canvas mycanvas = GetComponent<Canvas>();
-        mycanvas.enabled = true;
-        BoxCollider mycolider = GetComponent<BoxCollider>();
-        mycolider.enabled = true;
+        {
+            Canvas mycanvas = GetComponent<Canvas>();
+            mycanvas.enabled = true;
+            BoxCollider mycolider = GetComponent<BoxCollider>();
+            mycolider.enabled = true;
             // testDataGeneration();
         }
         catch
@@ -57,17 +58,20 @@ public class SSRP_context_element_controller : MonoBehaviour {
             boss.hud.addText("Context Canvas won't initialize?");
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
-        if (scrollview != null)
+
+    // Update is called once per frame
+    void Update() {
+
+        if (canRenderScroll && scrollview != null)
         { scrollview.SetActive(!isClosed); }
 
 
-       
-    }
 
+    }
+    public void forceDebugString()
+        {
+            
+        }
     
 
     public void importData(SSRP_ContextElement element)
@@ -85,6 +89,8 @@ public class SSRP_context_element_controller : MonoBehaviour {
 
     public void importData(SSRP_contextResponse response)
     {
+        boss = PersistantManager.Instance;
+        boss.hud.addText("Adding data to Context panel");
         childUpdateRequired = true;
         statusCode = response.statusCode;
         data = response.contextElement;
@@ -285,21 +291,28 @@ public class SSRP_context_element_controller : MonoBehaviour {
     private void testUIRender()
     {
         canRenderText = false;
+        canRenderScroll = false;
         try
         {
-            scrollview = contextEntityViewGameObject.transform.Find("scrollView").gameObject;
-            scrollview_canvas = scrollview.transform.GetComponent<RectTransform>();
+            
             if (ui_id != null && ui_type != null && ui_status != null && ui_isPattern != null)
             {
                 canRenderText = true;
                 //  Debug.LogFormat("canRenderText:{0}", canRenderText);
 
             }
-            else { Debug.LogWarningFormat("UI_404 canRenderText:{0}", canRenderText); }
+            else { Debug.LogWarningFormat("UI_404 can not RenderText:{0}", canRenderText); }
         }
-        catch { Debug.LogWarningFormat("UI_404 canRenderText:{0}", canRenderText); }
+        catch { Debug.LogWarningFormat("UI_404 can not RenderText:{0}", canRenderText); }
 
-        
+        try
+        {
+            scrollview = contextEntityViewGameObject.transform.Find("scrollView").gameObject;
+            scrollview_canvas = scrollview.transform.GetComponent<RectTransform>();
+            canRenderScroll = true;
+        }
+        catch { Debug.LogWarningFormat("UI_404 can not Render scroll"); }
+
     }
 
     private void testPrefabLink()

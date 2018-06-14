@@ -28,6 +28,7 @@ public class SSRP_reader : MonoBehaviour {
     public string fileName = "";
     public string assetBundleName;
     public string ssrp_response_string;
+    public string VuforiaDatabaseName;
     public Boolean isAuthenticated = false;
     public Boolean isOnline = false;
     public Boolean isBeating = false;
@@ -37,7 +38,7 @@ public class SSRP_reader : MonoBehaviour {
     Boolean bundleResponsed = true;
     private Boolean isInitializing = true;
 
-    private Boolean fileBeenRead = false;
+    private Boolean reading = false;
 
 
     private SSRP_entity_manager entityManager;
@@ -198,6 +199,7 @@ public class SSRP_reader : MonoBehaviour {
     // Action connectToSSRP -> address (send handshake)
     public void connectToSSRP()
     {
+        boss.ssrpIcon.On();
         boss = PersistantManager.Instance;
         boss.hud.addText("connectToSSRP (isAuthenticated:" + isAuthenticated + ")");
         if (!isAuthenticated)
@@ -308,6 +310,8 @@ public class SSRP_reader : MonoBehaviour {
     public void SSRP_Connection_Error()
     {
         boss = PersistantManager.Instance;
+        boss.ssrpIcon.Off();
+        
         Debug.Log("SSRP_Connection_Error");
         boss.ssrpIcon.Off();
         isAuthenticated = false;
@@ -319,133 +323,74 @@ public class SSRP_reader : MonoBehaviour {
 
         readStoredResponseFromFile();
     }
+    
 
-    /*
-    public string GetAtPath<T>(string path)
-    {
-        boss = PersistantManager.Instance;
-        ArrayList al = new ArrayList();
-        string[] fileEntries = Directory.GetFiles(Application.dataPath + "/" + path);
-
-        foreach (string fileName in fileEntries)
-        {
-            int assetPathIndex = fileName.IndexOf("Assets");
-            string localPath = fileName.Substring(assetPathIndex);
-
-            System.Object t = UnityEditor.AssetDatabase.LoadAssetAtPath(localPath, typeof(T));
-
-
-            if (t != null)
-            {
-                al.Add(t);
-                boss.hud.addText(localPath + "/" + t.ToString());
-            }
-        }
-        string resultstr = "";
-        string loc = "";
-        T[] result = new T[al.Count];
-        for (int i = 0; i < al.Count; i++)
-        { 
-            result[i] = (T)al[i];
-            
-            resultstr += result[i].ToString() + ", ";
-            boss.hud.addText(loc);
-            
-        }
-
-        return resultstr;
-    }
-    // */
-
-
-    public IEnumerator loadBundle()
-    {
-        boss = PersistantManager.Instance;
-
-
-
-        string uri = "file:///" + Application.dataPath + "/AssetBundles/" + assetBundleName;
-
-        UnityEngine.Networking.UnityWebRequest request = UnityEngine.Networking.UnityWebRequest.GetAssetBundle(uri, 0);
-        yield return request.SendWebRequest();
-        // yield return request.Send();
-        AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);
-        //ssrp_response_string = bundle.Load<>;
-        TextAsset charDataFile2 = bundle.LoadAsset(fileName) as TextAsset;
-        ssrp_response_string = charDataFile2.text;
-        response_raw = (SSRP_response_raw)Deserialize(typeof(SSRP_response_raw), ssrp_response_string);
-        boss.entityManager.importEntity(response_raw.contextResponses);
-        /*
-        GameObject cube = bundle.LoadAsset<GameObject>("Cube");
-
-        GameObject sprite = bundle.LoadAsset<GameObject>("Sprite");
-        Instantiate(cube);
-        Instantiate(sprite);
-        // */
-    }
 
 
     private void readStoredResponseFromFile()
     {
-        Boolean issue = true;
-        boss = PersistantManager.Instance;
-        // File.io stuff
-        string file = Application.dataPath + "/" + fileName;
-        string plainPath = Application.dataPath + "/" + gameDataProjectFilePath + "/" + fileName;
-
-        // standard unity stuff the last in the list forces the read from  ssrp_response_string
-        string fileNpath = gameDataProjectFilePath + "/" + fileName;
-        List<string> locations = new List<string>() { fileName, fileNpath, "" };
-        SSRP_contextResponse[] validatedResponse = null;
-
-        response_raw = null;
-
-
-
-        if (currentCount >= maxReadTimer)
+        if (!reading)
         {
-            boss.hud.addText("Attempted to read " + maxReadTimer + "times: STOP LOADING");
-            isBeating = false;
-            return;
-        }
-        // don't use .txt
+            reading = true;
+            boss.hud.addText("readStoredResponseFromFile()");
+            Boolean issue = true;
+            boss = PersistantManager.Instance;
+            boss.workingIcon.On();
+            boss.targetManager.dynamicLoadofVuforiaDataBase(VuforiaDatabaseName);
+        
+            // File.io stuff
+            /*
+            string file = Application.dataPath + "/" + fileName;
+            string plainPath = Application.dataPath + "/" + gameDataProjectFilePath + "/" + fileName;
+            */
+
+            // standard unity stuff the last in the list forces the read from  ssrp_response_string
+            string fileNpath = gameDataProjectFilePath + "/" + fileName;
+            List<string> locations = new List<string>() { fileName, fileNpath, "" };
+            SSRP_contextResponse[] validatedResponse = null;
+
+            response_raw = null;
 
 
 
-        foreach (string loc in locations)
-        {
-            if (validatedResponse == null)
+            if (currentCount >= maxReadTimer)
             {
-                SSRP_contextResponse[] temp = validateDataFrom(loc); 
-                if (temp != null)
+                boss.hud.addText("Attempted to read " + maxReadTimer + "times: STOP LOADING");
+                isBeating = false;
+                return;
+            }
+            // don't use .txt
+
+
+
+            foreach (string loc in locations)
+            {
+                if (validatedResponse == null)
                 {
-                    validatedResponse = validateDataFrom(loc);
+                    SSRP_contextResponse[] temp = validateDataFrom(loc); 
+                    if (temp != null)
+                    {
+                        validatedResponse = validateDataFrom(loc);
+                    }
                 }
+
             }
 
+            if (validatedResponse != null)
+            {
+                boss.hud.addText("Importing validatedResponse into SSRP entity manager for Filtering");
+                boss.entityManager.importEntity(validatedResponse);
+                currentCount++;
+            }
+            boss.workingIcon.Off();
+            reading = false;
         }
-
-        if (validatedResponse != null)
-        {
-            boss.entityManager.importEntity(validatedResponse);
-            currentCount++;
-        }
-
-        /*
-    boss.hud.addText("load via assetBundle");
-
-
-    loadBundle();
-    bundleResponsed = false;
-
-    boss.hud.addText("assetBundle not loaded");
-    */
 
     }
 
     private SSRP_contextResponse[] validateDataFrom(string loc)
     {
-        SSRP_contextResponse[] validatedResponse = null;
+        
         Boolean issue = false;
         TextAsset txtAsset;
         string str = "";
@@ -454,12 +399,22 @@ public class SSRP_reader : MonoBehaviour {
             try
             {
                 txtAsset = Resources.Load(loc, typeof(TextAsset)) as TextAsset; // forward slash
-                str = txtAsset.text;
+                boss.hud.addText(loc + ": text Obj found");
+               
             }
             catch
             {
-                boss.hud.addText(loc + ": not found");
+                boss.hud.addText(loc + ": text Obj not found");
                 return null;
+            }
+            try
+            {
+                str = txtAsset.text;
+                boss.hud.addText(loc + ":  got.text ");
+            }
+            catch
+            {
+                boss.hud.addText(loc + ": no.text");
             }
         }
         else
@@ -469,11 +424,13 @@ public class SSRP_reader : MonoBehaviour {
 
         if (str == "")
         {
+            boss.hud.addText(loc + ":str empy");
             return null;
         }
 
         try
         {
+            boss.hud.addText(loc + ":deserialized");
             response_raw = (SSRP_response_raw)Deserialize(typeof(SSRP_response_raw), str);
         }
         catch
@@ -485,13 +442,14 @@ public class SSRP_reader : MonoBehaviour {
         try
         {
             issue = !okResponse(response_raw);
+            boss.hud.addText(loc + ":parsed");
         }
         catch
         {
             boss.hud.addText(loc + " :parse fail");
             return null;
         }
-        
+        boss.hud.addText(loc + ":validated");
         return response_raw.contextResponses;
 
 
@@ -538,5 +496,33 @@ public class SSRP_reader : MonoBehaviour {
     void Update()
     {
     }
-        
+
+
+
+    public IEnumerator loadBundle()
+    {
+        boss = PersistantManager.Instance;
+
+
+
+        string uri = "file:///" + Application.dataPath + "/AssetBundles/" + assetBundleName;
+
+        UnityEngine.Networking.UnityWebRequest request = UnityEngine.Networking.UnityWebRequest.GetAssetBundle(uri, 0);
+        yield return request.SendWebRequest();
+        // yield return request.Send();
+        AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);
+        //ssrp_response_string = bundle.Load<>;
+        TextAsset charDataFile2 = bundle.LoadAsset(fileName) as TextAsset;
+        ssrp_response_string = charDataFile2.text;
+        response_raw = (SSRP_response_raw)Deserialize(typeof(SSRP_response_raw), ssrp_response_string);
+        boss.entityManager.importEntity(response_raw.contextResponses);
+        /*
+        GameObject cube = bundle.LoadAsset<GameObject>("Cube");
+
+        GameObject sprite = bundle.LoadAsset<GameObject>("Sprite");
+        Instantiate(cube);
+        Instantiate(sprite);
+        // */
+    }
+
 }

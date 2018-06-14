@@ -32,7 +32,7 @@ public class SSRP_entity_manager : MonoBehaviour
     }
     private void generateEmptySortingList()
     {
-
+        distanceSorted = null;
         distanceSorted = new List<List<SSRP_contextResponse>>();
         foreach (int bound in lodDistances)
         {
@@ -41,7 +41,7 @@ public class SSRP_entity_manager : MonoBehaviour
     }
 
 
-    public void importEntity(SSRP_contextResponse[] _loraSensors_unordered_List)
+    public void importEntity(SSRP_contextResponse[] _loraSensors_unordered_List = null)
     {
         boss = PersistantManager.Instance;
         generateEmptySortingList();
@@ -52,7 +52,7 @@ public class SSRP_entity_manager : MonoBehaviour
         foreach (SSRP_contextResponse response in _loraSensors_unordered_List)
         {
 
-            // Find LAT and LON
+            // Find Filter out LAT, LON, Marker_name
             string sLat = response.getAttributeValue("LAT");
             string sLon = response.getAttributeValue("LON");
 
@@ -65,7 +65,7 @@ public class SSRP_entity_manager : MonoBehaviour
             
             response.distToViewer = (double)Vector3.Distance(gpsPos, response.gpsPos);
 
-            int loc = 0;
+            int lod = 0;
             int maxValue;
             int minValue;
             for (i = 0; i < m; i++)
@@ -75,6 +75,7 @@ public class SSRP_entity_manager : MonoBehaviour
 
                 if (response.distToViewer < maxValue && response.distToViewer > minValue)
                 {
+                    lod = i;
                     // Debug.LogFormat("TRUE - viewer gpsPos: [{0},{1}]Lat:{2}, lon:{3}, distToViewer:{4} fits in lod_{5}:{6}", gpsPos.x, gpsPos.y, response.gpsPos.x, response.gpsPos.y, response.distToViewer, i, lodDistances[i]);
                     Debug.LogFormat("TRUE -  distToViewer:{0} fits in lod_{1}:{2}", response.distToViewer, i, lodDistances[i]);
                     boss.hud.addText("TRUE -  distToViewer:" + response.distToViewer + " fits in lod_" + i + ":" + lodDistances[i]);
@@ -85,19 +86,8 @@ public class SSRP_entity_manager : MonoBehaviour
 
             }
 
-            distanceSorted[loc].Add(response);
-
-            /* user to cycle through all the bounds.
-            int distanceValue = 1;
+            distanceSorted[lod].Add(response);
             
-            while(distanceValue <= 800)
-            {
-                response.distToViewer = distanceValue;
-               
-                distanceValue += 5;
-
-            }
-            // */
         }
 
 
@@ -106,7 +96,7 @@ public class SSRP_entity_manager : MonoBehaviour
 
         List<SSRP_contextResponse> localMarkers = distanceSorted[0];
         // push nearest Lod to the marker generator
-        boss.targetManager.import(localMarkers);
+        
 
         // update hud SensorCount
         string sensorBreakDown_str = "";
@@ -120,16 +110,8 @@ public class SSRP_entity_manager : MonoBehaviour
         }
 
         boss.hud.sensorBreakDown(sensorBreakDown_str);
+        boss.targetManager.import(localMarkers);
 
-
-
-
-
-        /*
-        emptyEntity();
-        AddEntity();
-        renderEntities();
-        */
     }
 
     /*

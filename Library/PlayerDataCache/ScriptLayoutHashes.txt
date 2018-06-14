@@ -1,6 +1,6 @@
 Metro
 PlayerPath?
-C:/Users/vr-user/Documents/pd_dev/GitHubRepo/dep
+C:/Users/Dixon/Documents/GitHub/hololens_deploy
 SceneListBegin?
 Assets/_ssrp/_scenes/ssrp_complete.unity
 SceneListEnd?
@@ -391,7 +391,7 @@ d2af69ce28cda6fcf0b7728ae3f251b4 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 00899b89e3f5c32399bd6d7e15cb69bc Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.AnimatedCursor
 602017ac837ce39de79e6b98478ee720 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleActivatorMenu
 f7cf9e253f09e4ec8daa4fc98b6daae3 Assembly-CSharp.dll:HoloToolkit.UI.Keyboard.KeyboardInputField
-b7d0106bf70ab9a6d8d86528f704b400 Assembly-CSharp.dll:.SSRP_target_controller
+f991cc3d0b852144c3dd900f130deb3c Assembly-CSharp.dll:.SSRP_target_controller
 af4ae9a3d9778026e545c5b641928c70 Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.CameraMotionInfo
 e6857e57e5f774d089533f27a4a00016 Assembly-CSharp.dll:HoloToolkit.Unity.Buttons.CompoundButtonIcon
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -410,7 +410,7 @@ e8ba2e453aff9cf5487189ad115348c5 Assembly-CSharp.dll:HoloToolkit.Unity.UX.Distor
 4359ad7c5b190e7c5fd06955c3d79519 Assembly-CSharp.dll:HoloToolkit.Unity.InputModule.SpeechInputHandler
 8644983781391a1a0c05940eaa565fef Assembly-CSharp.dll:HoloToolkit.Unity.SpatialMapping.RemoteMeshSource
 bf32e4c941fcd4078b3b322bed30732a Assembly-CSharp.dll:HoloToolkit.Unity.UX.BoundingBoxGizmoShell
-0ce2f143b741303e52c66e393fb98fd4 Assembly-CSharp.dll:.SSRP_reader
+3607808c523e0b7f9faf88af89b1fbdf Assembly-CSharp.dll:.SSRP_reader
 ac80fcaace31dfd3ed996cbb813a4263 Assembly-CSharp.dll:HoloToolkit.Unity.Buttons.CompoundButtonMesh
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 4c81c8962ca9c4dfc6f330235be37fe9 Assembly-CSharp.dll:HoloToolkit.Sharing.Utilities.DirectPairing

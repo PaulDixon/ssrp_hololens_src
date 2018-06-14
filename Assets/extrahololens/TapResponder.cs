@@ -20,13 +20,14 @@ namespace HoloToolkit.Unity.InputModule.Tests
             // Increase the scale of the object just as a response.
             //gameObject.transform.localScale += 0.05f * gameObject.transform.localScale;
             try { 
-            SSRP_context_element_controller contextElement = gameObject.transform.GetComponent<SSRP_context_element_controller>();
-            contextElement.isClosed = !contextElement.isClosed;
-            eventData.Use(); // Mark the event as used, so it doesn't fall through to other handlers.
+                SSRP_context_element_controller contextElement = gameObject.transform.GetComponent<SSRP_context_element_controller>();
+                contextElement.isClosed = !contextElement.isClosed;
+                eventData.Use(); // Mark the event as used, so it doesn't fall through to other handlers.
             }
             catch
             {
-                boss.hud.addText("Tap_linkage broken ");
+                boss = PersistantManager.Instance;
+                boss.hud.addText("Object has no SSRP_context_element_controller to Open/Close ");
             }
         }
     }

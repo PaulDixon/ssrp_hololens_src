@@ -79,6 +79,11 @@ public class SSRP_hud_controller : MonoBehaviour
 
 
         Debug.Log(str);
+        if(info.Count == MaxMessages)
+        {
+            info.RemoveAt(0);
+
+        }
         info.Add(str);
         renderText();
         if (!needsTidying)
