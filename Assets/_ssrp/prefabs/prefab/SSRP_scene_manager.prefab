@@ -103,7 +103,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4675780370139500}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4472913449826638
 Transform:
@@ -116,7 +116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4675780370139500}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4675780370139500
 Transform:
@@ -128,10 +128,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4783529537060840}
   - {fileID: 4324773968691246}
   - {fileID: 4888406286417244}
   - {fileID: 4472913449826638}
-  - {fileID: 4783529537060840}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,11 +142,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1330727448994654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5499878}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4675780370139500}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4888406286417244
 Transform:
@@ -159,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4675780370139500}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114164948258558958
 MonoBehaviour:
@@ -209,146 +209,128 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peopleToThank: []
   loraURL: www.
-  gameDataProjectFilePath: /Resources/ssrp_response_nk.txt
-  ssrp_response_string: "{\r\n\"contextResponses\": [\r\n\r\n        {\r\n\r\n            \"contextElement\":
-    {\r\n\r\n                \"type\": \"LORA_Sensor\",\r\n\r\n                \"isPattern\":
-    \"false\",\r\n\r\n                \"id\": \"0004a30b0022a677\",\r\n\t\t\t\t\r\n
-    \               \"attributes\": [\r\n\t\t\t\t{\r\n\r\n                        \"name\":
-    \"marker_name\",\r\n\r\n                        \"type\": \"string\",\r\n\r\n
-    \                       \"value\": \"logo_0p275m\"\r\n\r\n                       \r\n\r\n
-    \                   },\r\n\r\n                    {\r\n\r\n                        \"name\":
-    \"Acc motion\",\r\n\r\n                        \"type\": \"integer\",\r\n\r\n
-    \                       \"value\": \"\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"Number of Vibration/motion\"\r\n\r\n
-    \                           }\r\n\r\n                        ]\r\n\r\n                    },\r\n\r\n
-    \                   {\r\n\r\n                        \"name\": \"Acceleration
-    X-Axis\",\r\n\r\n                        \"type\": \"integer\",\r\n\r\n                        \"value\":
-    \"\",\r\n\r\n                        \"metadatas\": [\r\n\r\n                            {\r\n\r\n
-    \                               \"name\": \"unit\",\r\n\r\n                                \"type\":
-    \"string\",\r\n\r\n                                \"value\": \"+/-63 1G\"\r\n\r\n
-    \                           }\r\n\r\n                        ]\r\n\r\n                    },\r\n\r\n
-    \                   {\r\n\r\n                        \"name\": \"Acceleration
-    Y-Axis\",\r\n\r\n                        \"type\": \"integer\",\r\n\r\n                        \"value\":
-    \"\",\r\n\r\n                        \"metadatas\": [\r\n\r\n                            {\r\n\r\n
-    \                               \"name\": \"unit\",\r\n\r\n                                \"type\":
-    \"string\",\r\n\r\n                                \"value\": \"+/-63 1G\"\r\n\r\n
-    \                           }\r\n\r\n                        ]\r\n\r\n                    },\r\n\r\n
-    \                   {\r\n\r\n                        \"name\": \"Acceleration
-    Z-Axis\",\r\n\r\n                        \"type\": \"integer\",\r\n\r\n                        \"value\":
-    \"\",\r\n\r\n                        \"metadatas\": [\r\n\r\n                            {\r\n\r\n
-    \                               \"name\": \"unit\",\r\n\r\n                                \"type\":
-    \"string\",\r\n\r\n                                \"value\": \"+/-63 1G\"\r\n\r\n
-    \                           }\r\n\r\n                        ]\r\n\r\n                   },\r\n\r\n
-    \                   {\r\n\r\n                        \"name\": \"Battery level\",\r\n\r\n
-    \                       \"type\": \"integer\",\r\n\r\n                        \"value\":
-    \"\",\r\n\r\n                        \"metadatas\": [\r\n\r\n                            {\r\n\r\n
-    \                               \"name\": \"unit\",\r\n\r\n                                \"type\":
-    \"string\",\r\n\r\n                                \"value\": \"mV\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"Co2\",\r\n\r\n                        \"type\":
-    \"integer\",\r\n\r\n                        \"value\": \"\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"ppm\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"Humidity\",\r\n\r\n                        \"type\":
-    \"integer\",\r\n\r\n                        \"value\": \"\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"%\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"LAT\",\r\n\r\n                        \"type\":
-    \"float\",\r\n\r\n                        \"value\": \"64.751465\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"degrees\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"LON\",\r\n\r\n                        \"type\":
-    \"float\",\r\n\r\n                        \"value\": \"20.954414\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"degrees\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"Light\",\r\n\r\n                        \"type\":
-    \"integer\",\r\n\r\n                        \"value\": \"\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"LUX\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"Motion\",\r\n\r\n                        \"type\":
-    \"integer\",\r\n\r\n                        \"value\": \"\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"No of motion\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"NO2\",\r\n\r\n                        \"type\":
-    \"float\",\r\n\r\n                        \"value\": \"0.08294051\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"ppm\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"PM1\",\r\n\r\n                        \"type\":
-    \"float\",\r\n\r\n                        \"value\": \"0.8993625\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"ug/m3\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"PM10\",\r\n\r\n                        \"type\":
-    \"float\",\r\n\r\n                        \"value\": \"2.4104462\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"ug/m3\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"PM25\",\r\n\r\n                        \"type\":
-    \"float\",\r\n\r\n                        \"value\": \"1.484232\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"ug/m3\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"Temperature\",\r\n\r\n                        \"type\":
-    \"float\",\r\n\r\n                        \"value\": \"\",\r\n\r\n                        \"metadatas\":
-    [\r\n\r\n                            {\r\n\r\n                                \"name\":
-    \"unit\",\r\n\r\n                                \"type\": \"string\",\r\n\r\n
-    \                               \"value\": \"C\"\r\n\r\n                            }\r\n\r\n
-    \                       ]\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"Timestamp\",\r\n\r\n                        \"type\":
-    \"dd-MM-yyyy HH:mm:ss.SSSS\",\r\n\r\n                        \"value\": \"20-05-2018
-    23:27:02.0971\"\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"appEui\",\r\n\r\n                        \"type\":
-    \"dec\",\r\n\r\n                        \"value\": \"0000000000000000\"\r\n\r\n
-    \                   },\r\n\r\n                    {\r\n\r\n                        \"name\":
-    \"clusterId\",\r\n\r\n                        \"type\": \"dec\",\r\n\r\n                        \"value\":
-    \"70\"\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n                        \"name\":
-    \"devAddr\",\r\n\r\n                        \"type\": \"hex\",\r\n\r\n                        \"value\":
-    \"0022a677\"\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"fcntDown\",\r\n\r\n                        \"type\":
-    \"dec\",\r\n\r\n                        \"value\": \"0\"\r\n\r\n                    },\r\n\r\n
-    \                   {\r\n\r\n                        \"name\": \"fcntUp\",\r\n\r\n
-    \                       \"type\": \"dec\",\r\n\r\n                        \"value\":
-    \"746\"\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n                        \"name\":
-    \"fport\",\r\n\r\n                        \"type\": \"dec\",\r\n\r\n                        \"value\":
-    \"1\"\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n                        \"name\":
-    \"maxretry\",\r\n\r\n                        \"type\": \"dec\",\r\n\r\n                        \"value\":
-    \"1\"\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n                        \"name\":
-    \"msgId\",\r\n\r\n                        \"type\": \"hex\",\r\n\r\n                        \"value\":
-    \"5b01e80e4f05a8000e1aafd7\"\r\n\r\n                    },\r\n\r\n                    {\r\n\r\n
-    \                       \"name\": \"payload\",\r\n\r\n                        \"type\":
-    \"hex\",\r\n\r\n                        \"value\": \"0B 3F 66 3C 9F 3F BD FB 50
-    40 1A 44 C0 3D A9 DC B7 42 81 80 C0 41 A7 A2 A4\"\r\n\r\n                    },\r\n\r\n
-    \                   {\r\n\r\n                        \"name\": \"ttl\",\r\n\r\n
-    \                       \"type\": \"dec\",\r\n\r\n                        \"value\":
-    \"0\"\r\n\r\n                    }\r\n\r\n                ]\r\n\r\n            },\r\n\r\n
-    \           \"statusCode\": {\r\n\r\n                \"code\": \"200\",\r\n\r\n
-    \               \"reasonPhrase\": \"OK\"\r\n\r\n            }\r\n\r\n        }\r\n\r\n
-    \   ]\r\n}"
+  maxReadTimer: 3
+  gameDataProjectFilePath: Resources
+  fileName: ssrp_response_ltu
+  assetBundleName: hololensbundle
+  ssrp_response_string: "{ \"contextResponses\": [          {              \"contextElement\":
+    {                  \"type\": \"LORA_Sensor\",                  \"isPattern\":
+    \"false\",                  \"id\": \"0004a30b0022a677\", \t\t\t\t                 \"attributes\":
+    [ \t\t\t\t{                          \"name\": \"marker_name\",                          \"type\":
+    \"string\",                          \"value\": \"ssrlogo_w0p275m_h0p144m\"                                               },
+    \                     {                          \"name\": \"Acc motion\",                          \"type\":
+    \"integer\",                          \"value\": \"\",                          \"metadatas\":
+    [                              {                                  \"name\": \"unit\",
+    \                                 \"type\": \"string\",                                  \"value\":
+    \"Number of Vibration/motion\"                              }                          ]
+    \                     },                      {                          \"name\":
+    \"Acceleration X-Axis\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"+/-63 1G\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Acceleration Y-Axis\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"+/-63 1G\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Acceleration Z-Axis\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"+/-63 1G\"                              }
+    \                         ]                     },                      {                          \"name\":
+    \"Battery level\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"mV\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Co2\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"ppm\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Humidity\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"%\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"LAT\",                          \"type\": \"float\",                          \"value\":
+    \"64.751465\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"degrees\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"LON\",                          \"type\": \"float\",                          \"value\":
+    \"20.954414\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"degrees\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Light\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"LUX\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Motion\",                          \"type\": \"integer\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"No of motion\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"NO2\",                          \"type\": \"float\",                          \"value\":
+    \"0.08294051\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"ppm\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"PM1\",                          \"type\": \"float\",                          \"value\":
+    \"0.8993625\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"ug/m3\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"PM10\",                          \"type\": \"float\",                          \"value\":
+    \"2.4104462\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"ug/m3\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"PM25\",                          \"type\": \"float\",                          \"value\":
+    \"1.484232\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"ug/m3\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Temperature\",                          \"type\": \"float\",                          \"value\":
+    \"\",                          \"metadatas\": [                              {
+    \                                 \"name\": \"unit\",                                  \"type\":
+    \"string\",                                  \"value\": \"C\"                              }
+    \                         ]                      },                      {                          \"name\":
+    \"Timestamp\",                          \"type\": \"dd-MM-yyyy HH:mm:ss.SSSS\",
+    \                         \"value\": \"20-05-2018 23:27:02.0971\"                      },
+    \                     {                          \"name\": \"appEui\",                          \"type\":
+    \"dec\",                          \"value\": \"0000000000000000\"                      },
+    \                     {                          \"name\": \"clusterId\",                          \"type\":
+    \"dec\",                          \"value\": \"70\"                      },                      {
+    \                         \"name\": \"devAddr\",                          \"type\":
+    \"hex\",                          \"value\": \"0022a677\"                      },
+    \                     {                          \"name\": \"fcntDown\",                          \"type\":
+    \"dec\",                          \"value\": \"0\"                      },                      {
+    \                         \"name\": \"fcntUp\",                          \"type\":
+    \"dec\",                          \"value\": \"746\"                      },                      {
+    \                         \"name\": \"fport\",                          \"type\":
+    \"dec\",                          \"value\": \"1\"                      },                      {
+    \                         \"name\": \"maxretry\",                          \"type\":
+    \"dec\",                          \"value\": \"1\"                      },                      {
+    \                         \"name\": \"msgId\",                          \"type\":
+    \"hex\",                          \"value\": \"5b01e80e4f05a8000e1aafd7\"                      },
+    \                     {                          \"name\": \"payload\",                          \"type\":
+    \"hex\",                          \"value\": \"0B 3F 66 3C 9F 3F BD FB 50 40 1A
+    44 C0 3D A9 DC B7 42 81 80 C0 41 A7 A2 A4\"                      },                      {
+    \                         \"name\": \"ttl\",                          \"type\":
+    \"dec\",                          \"value\": \"0\"                      }                  ]
+    \             },              \"statusCode\": {                  \"code\": \"200\",
+    \                 \"reasonPhrase\": \"OK\"              }          }      ] }"
+  VuforiaDatabaseName: SenseSmartMarkers
   isAuthenticated: 0
-  isOnline: 1
-  isBeating: 1
-  heartbeat_bpm: 40
+  isOnline: 0
+  isBeating: 0
+  heartbeat_bpm: 6
   wwwTimer: 5
-  vApiKey: AWbv2Br/////AAADmfP5GXalbk/Un7Konr4YTlYJuhC11t5wmTGsILPJ5GP9vVPER2KxzmBAq7Pa+sNgfbsby96rYWi2U7Yue8d4SLdjmxtiB+P19oapvxndRHHnVcTyn1Z6/PVc9apPLs6AdRFy7PR/orE4oEoilC2wKe+lO7tpyL49zP5rSW5sQtCUYINMZdQOkm5kNqPIrXtsG3e7LO7b8Yt8e0BIK4okkZnjPV+ioRlrSpu/9MXeB6Vds8A8bDmV99ISBpRolr/cpskPJikHaCeV5NE5GGfdLOA1CFG9FX0/9Iv6YddqoC0wmG07LJGrz49e/17j5vHcNfR56/7UkhMZ4Dqf1XUTzImeCVIezGaj1JXdmq7fmR6m
+  vApiKey: 'AWbv2Br/////AAADmfP5GXalbk/Un7Konr4YTlYJuhC11t5wmTGsILPJ5GP9vVPER2KxzmBAq7Pa+sNgfbsby96rYWi2U7Yue8d4SLdjmxtiB+P19oapvxndRHHnVcTyn1Z6/PVc9apPLs6AdRFy7PR/orE4oEoilC2wKe+lO7tpyL49zP5rSW5sQtCUYINMZdQOkm5kNqPIrXtsG3e7LO7b8Yt8e0BIK4okkZnjPV+ioRlrSpu/9MXeB6Vds8A8bDmV99ISBpRolr/cpskPJikHaCeV5NE5GGfdLOA1CFG9FX0/9Iv6YddqoC0wmG07LJGrz49e/17j5vHcNfR56/7UkhMZ4Dqf1XUTzImeCVIezGaj1JXdmq7fmR6m '
   vuforiaMarkerId: eed385f01b6d4f11a32a43304d6deb2f
 --- !u!114 &114602475356911158
 MonoBehaviour:
@@ -362,11 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTransform: {fileID: 0}
-  dataSetName: TargetLock
-  augmentationObject: {fileID: 1085439253953348, guid: 25a470892936e224691c3c5e6eb739af,
-    type: 2}
-  augmentationAnchor: {fileID: 1119188278142606, guid: bf5c7f114ae95d545aee059f710638e4,
-    type: 2}
+  augmentationObject: {fileID: 0}
+  augmentationAnchor: {fileID: 0}
 --- !u!114 &114825310405061584
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,7 +18,7 @@ public class SSRP_context_element_controller : MonoBehaviour {
     public bool allowedToRender = false;
     public int maxColSize = 6;
 
-    public GameObject contextEntityViewGameObject; // we will be instatiating metaData Prefabs
+    private GameObject contextEntityViewGameObject; // we will be instatiating metaData Prefabs
     private RectTransform entity_canvas;           // Link to the attribute canvas
     private Vector2 entity_canvas_init_dimension;// Initial Attribute Rectangle position,height,width x,y,center, top,bottom,left,right
     private bool canLocateBaseGO = false;
@@ -41,6 +41,7 @@ public class SSRP_context_element_controller : MonoBehaviour {
     void Start()
     {
         boss = PersistantManager.Instance;
+        canRenderScroll = false;
         isClosed = true;
         testUIRender();
         testParentLink();
@@ -156,18 +157,9 @@ public class SSRP_context_element_controller : MonoBehaviour {
         Vector2 newCanvasDimensions = new Vector2(0f, 0f);
         int m = data.attributes.Length;
         int i = 0;
+        
 
-        /*
-        // debug purposes 
-        string childDescription = "";
-        foreach (SSRP_attribute childObj in data.attributes)
-        {
-            childDescription += childObj.description() + ",\n";
-        }
-        Debug.LogFormat("Element Controller :  canLocateBaseGO:{1} and canRenderMeta:{2}, add {0} Children, attributes = [{3}]", m, canLocateBaseGO, canRenderChildData, childDescription);
-        // */
-
-        if (canLocateBaseGO && canRenderChildData)
+        if (canRenderChildData)
         {
             if (m == 0)
             {
@@ -177,7 +169,7 @@ public class SSRP_context_element_controller : MonoBehaviour {
             {
                 
                 Vector3 newCanvasPosition = new Vector3(0f, 0f, 0f);
-                Vector2 origin = new Vector2(0f, -126f);
+                Vector2 origin = new Vector2(0f, 0f);    // new Vector2(0f, -126f);
                 Vector2 offset = new Vector2(10, -10f);
                 Vector2 dim = new Vector2(210f, 126f);
                 Vector2 step = new Vector2(0f, 0f);
@@ -188,7 +180,7 @@ public class SSRP_context_element_controller : MonoBehaviour {
 
                 // rough GRID LAY OUT FOR ATTRIBUTESs - this should be have one level of recursion and to resize 6 boxes, into 2 rows of 3, and not 1 row of 5 and one row of 1. 
                 
-                // scrollview.transform
+                
                 float scrollbarSize = 25;
                 if (maxColSize > 0)
                 {
@@ -205,10 +197,10 @@ public class SSRP_context_element_controller : MonoBehaviour {
                     
                     float height = Mathf.Ceil((dim.y + Mathf.Abs(offset.y)) * rows) + scrollbarSize;
                     float width = offset.x + (dim.x * cols) + scrollbarSize;
-             //       Debug.LogFormat("We have {0} attribute and a maxColSize of {1}, giving us a height:{2} and width:{3}", m, maxColSize, height, width);
+
                     try
                     {
-                        scrollview = contextEntityViewGameObject.transform.Find("scrollView").gameObject;
+                        scrollview = transform.Find("popup").gameObject;
                         scrollview_canvas = scrollview.transform.GetComponent<RectTransform>();
 
                         scrollview_canvas.sizeDelta = new Vector2(width, height);
@@ -218,6 +210,7 @@ public class SSRP_context_element_controller : MonoBehaviour {
                         Debug.LogFormat("couldn't link to scrollview Canvas");
                     }
                 }
+
 
                
                 
@@ -242,8 +235,15 @@ public class SSRP_context_element_controller : MonoBehaviour {
                     pos = origin + offset + stepOffset;
                     GameObject data_MVC;
 
+                    Debug.Log(scrollview);
+                    if (scrollview == null || scrollview.transform == null)
+                    {
+                        return;
+                    }
+                    
+                   
                     data_MVC = (GameObject)Instantiate(attributGameObjectPrefab, pos, Quaternion.identity);
-                    data_MVC.transform.SetParent(ViewPortContentTarget.transform, false);
+                    data_MVC.transform.SetParent(scrollview.transform, false);
                     prefabChildList.Add(data_MVC);
                     SSRP_Attribute_Controller child_controller = data_MVC.GetComponent<SSRP_Attribute_Controller>();
                //     Debug.LogFormat("SSRP_attribute childData = [{0}]", childData.description());
@@ -307,11 +307,14 @@ public class SSRP_context_element_controller : MonoBehaviour {
 
         try
         {
-            scrollview = contextEntityViewGameObject.transform.Find("scrollView").gameObject;
-            scrollview_canvas = scrollview.transform.GetComponent<RectTransform>();
+            // scrollview = contextEntityViewGameObject.transform.Find("scrollView").gameObject;
+            if (scrollview != null)
+            { 
+             scrollview_canvas = scrollview.transform.GetComponent<RectTransform>();
+            }
             canRenderScroll = true;
         }
-        catch { Debug.LogWarningFormat("UI_404 can not Render scroll"); }
+        catch { Debug.LogWarningFormat("UI_404 can not Render scroll scrollview:{0}, scrollview_canvas:{1}", scrollview, scrollview_canvas); }
 
     }
 
@@ -342,16 +345,9 @@ public class SSRP_context_element_controller : MonoBehaviour {
         canLocateBaseGO = false;
         try
         {
-
-            if (contextEntityViewGameObject != null && ViewPortContentTarget != null)
-            {
-                canLocateBaseGO = true;
-                entity_canvas = contextEntityViewGameObject.transform.GetComponent<RectTransform>();
-                //entity_canvas_init_dimension = entity_canvas.sizeDelta;
-
-
-            }
-            else { Debug.LogWarningFormat("attributeViewGameObject is missing canLocateBaseGO:{0}", canLocateBaseGO); }
+            canLocateBaseGO = true;
+            entity_canvas = transform.GetComponent<RectTransform>();
+            
         }
         catch { Debug.LogWarningFormat("attributeViewGameObject is missing canLocateBaseGO:{0}", canLocateBaseGO); }
 
@@ -373,5 +369,119 @@ public class SSRP_context_element_controller : MonoBehaviour {
         SSRP_attribute[] attList = new SSRP_attribute[] { test_att01, test_att02, test_att03, test_att04, test_att05 };
         SSRP_ContextElement testdata= new SSRP_ContextElement("34234324243","sun","true", attList);
          importData(testdata);
+    }
+
+    private void addChildren_old_scrollview()
+    {
+        //data.attributes = new SSRP_attribute[] { };
+        Vector2 newCanvasDimensions = new Vector2(0f, 0f);
+        int m = data.attributes.Length;
+        int i = 0;
+
+        /*
+        // debug purposes 
+        string childDescription = "";
+        foreach (SSRP_attribute childObj in data.attributes)
+        {
+            childDescription += childObj.description() + ",\n";
+        }
+        Debug.LogFormat("Element Controller :  canLocateBaseGO:{1} and canRenderMeta:{2}, add {0} Children, attributes = [{3}]", m, canLocateBaseGO, canRenderChildData, childDescription);
+        // */
+
+        if (canLocateBaseGO && canRenderChildData)
+        {
+            if (m == 0)
+            {
+                //newCanvasDimensions = childPrefab_canvas_init_dimension;
+            }
+            else
+            {
+
+                Vector3 newCanvasPosition = new Vector3(0f, 0f, 0f);
+                Vector2 origin = new Vector2(0f, -126f);
+                Vector2 offset = new Vector2(10, -10f);
+                Vector2 dim = new Vector2(210f, 126f);
+                Vector2 step = new Vector2(0f, 0f);
+                Vector2 stepOffset = new Vector2(0, 0);
+                Vector2 pos = new Vector2(0f, 0f);
+                int rowNo = 0;
+                int colCount = 0;
+
+                // rough GRID LAY OUT FOR ATTRIBUTESs - this should be have one level of recursion and to resize 6 boxes, into 2 rows of 3, and not 1 row of 5 and one row of 1. 
+
+                // scrollview.transform
+                float scrollbarSize = 25;
+                if (maxColSize > 0)
+                {
+                    float rows = 0;
+                    float cols = maxColSize;
+                    if (m <= maxColSize)
+                    {
+                        cols = m;
+                        rows = 1;
+                    }
+                    else
+                    {
+                        rows = Mathf.Floor(m / maxColSize) + 1;
+                    }
+
+                    float height = Mathf.Ceil((dim.y + Mathf.Abs(offset.y)) * rows) + scrollbarSize;
+                    float width = offset.x + (dim.x * cols) + scrollbarSize;
+                    //       Debug.LogFormat("We have {0} attribute and a maxColSize of {1}, giving us a height:{2} and width:{3}", m, maxColSize, height, width);
+                    try
+                    {
+                        scrollview = contextEntityViewGameObject.transform.Find("scrollView").gameObject;
+                        scrollview_canvas = scrollview.transform.GetComponent<RectTransform>();
+
+                        scrollview_canvas.sizeDelta = new Vector2(width, height);
+                    }
+                    catch
+                    {
+                        Debug.LogFormat("couldn't link to scrollview Canvas");
+                    }
+                }
+
+
+
+
+
+
+                // loop through list of Child data and generate their UI
+                for (i = 0; i < m; i++)
+                {
+
+                    if (maxColSize > 0 && colCount == maxColSize)
+                    {
+                        colCount = 0;
+                        rowNo++;
+
+                    }
+                    step.Set(colCount, -rowNo);
+
+                    stepOffset = Vector2.Scale(step, dim);
+
+                    SSRP_attribute childData = data.attributes[i];
+                    pos = origin + offset + stepOffset;
+                    GameObject data_MVC;
+
+                    data_MVC = (GameObject)Instantiate(attributGameObjectPrefab, pos, Quaternion.identity);
+                    data_MVC.transform.SetParent(ViewPortContentTarget.transform, false);
+                    prefabChildList.Add(data_MVC);
+                    SSRP_Attribute_Controller child_controller = data_MVC.GetComponent<SSRP_Attribute_Controller>();
+                    //     Debug.LogFormat("SSRP_attribute childData = [{0}]", childData.description());
+                    child_controller.importData(childData);
+                    colCount++;
+                }
+
+
+                //resize base canvas
+                //newCanvasDimensions = new Vector2(200f, (m + 1) * childPrefab_canvas_init_dimension.y);
+                //entity_canvas.sizeDelta = newCanvasDimensions;
+            }
+
+
+        }
+
+
     }
 }

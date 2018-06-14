@@ -27,8 +27,8 @@ MonoBehaviour:
     eyewearType: 1
     stereoFramework: 0
     seeThroughConfiguration: 1
-    viewerName: 
-    viewerManufacturer: 
+    viewerName: Generic Cardboard
+    viewerManufacturer: Vuforia
     useCustomViewer: 0
     customViewer:
       Version: 0

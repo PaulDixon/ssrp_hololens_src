@@ -27,31 +27,41 @@ public class interactionListener : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            string name = hit.transform.name;
             //boss.hud.addText("MouseClick hit");
+            SSRP_context_element_controller child_controller = null;
             try
             {
-                SSRP_context_element_controller child_controller = hit.transform.GetComponent<SSRP_context_element_controller>();
+                child_controller = hit.transform.GetComponent<SSRP_context_element_controller>();
                 //child_controller.importData(entityData);
 
-                child_controller.isClosed = !child_controller.isClosed;
-                //boss.hud.addText("hit child_controller found ");
+
             }
             catch
             {
-                boss.hud.addText("no script found on " + device  + " iteraction ");
+               
+                
             }
 
-
-            /*
-            if (hit.transform.name == "SSRP_context_element_view")
+            if (child_controller == null)
             {
-                boss.hud.addText("hit SSRP_context_element_view ");
+                boss.hud.addText("no SSRP_context_element_controller found on " + name + " from " + device + " iteraction ");
+                return;
             }
             else
             {
-                boss.hud.addText("hit.transform.name == " + hit.transform.name);
+                
+                child_controller.isClosed = !child_controller.isClosed;
+                if (child_controller.isClosed)
+                {
+                    boss.hud.addText("Closed Sensor Data Panel"  + name);
+                }
+                else
+                {
+                    boss.hud.addText("Open Sensor Data Panel "+   name);
+                }
             }
-            // */
+            
         }
         else
         {

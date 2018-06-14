@@ -175,9 +175,11 @@ public class SSRP_target_controller : MonoBehaviour
         boss.hud.addText(" context Search In Trackables list ()");
         int overalCounter = 0;
         int foundCounter = 0;
+        
         if (dataset_With_Trackables == null)
         {
             boss.hud.addText(" dataset_With_Trackables is empty");
+            return;
         }
 
         foreach (TrackableBehaviour tb in dataset_With_Trackables)
@@ -241,11 +243,22 @@ public class SSRP_target_controller : MonoBehaviour
 
 
             // instantiate augmentation object and parent to trackable
-            GameObject aug_anchor = (GameObject)GameObject.Instantiate(augmentationAnchor);
-            aug_anchor.transform.SetParent(tb.gameObject.transform);
-            //aug_anchor.transform.localPosition = Vector3.zero;
-            //aug_anchor.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
-            //aug_anchor.transform.localScale = new Vector3(0.275f, 0.275f, 0.275f);
+            GameObject aug_anchor = null;
+            if (augmentationAnchor != null)
+            {
+                aug_anchor = (GameObject)GameObject.Instantiate(augmentationAnchor);
+                aug_anchor.transform.SetParent(tb.gameObject.transform);
+                //aug_anchor.transform.localPosition = Vector3.zero;
+                //aug_anchor.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+                //aug_anchor.transform.localScale = new Vector3(0.275f, 0.275f, 0.275f);
+            }
+            else
+            {
+                aug_anchor = tb.gameObject;
+            }
+            
+            
+           
 
             // instantiate augmentation object and parent to trackable
             GameObject aug_obj = (GameObject)GameObject.Instantiate(augmentationObject);
@@ -255,7 +268,7 @@ public class SSRP_target_controller : MonoBehaviour
             //                           aug_obj.transform.localRotation = Quaternion.identity;
             //                          aug_obj.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 
-            SSRP_context_element_controller aug_obj_script = aug_obj.GetComponent<SSRP_context_element_controller>();
+            ssrp_ContextAnchor aug_obj_script = aug_obj.GetComponent<ssrp_ContextAnchor>();
             if (aug_obj_script != null)
             {
                 aug_obj_script.importData(hit_response);
