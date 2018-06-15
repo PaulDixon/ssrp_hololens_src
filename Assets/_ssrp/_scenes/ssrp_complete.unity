@@ -3451,6 +3451,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 467302527}
+--- !u!4 &468830204 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4282731088954588, guid: 876ecc20f2e15044696d8d88b580ec59,
+    type: 2}
+  m_PrefabInternal: {fileID: 1045128088}
 --- !u!1 &469065074
 GameObject:
   m_ObjectHideFlags: 0
@@ -6633,11 +6638,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 876ecc20f2e15044696d8d88b580ec59, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1045128089 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4343276655535566, guid: 876ecc20f2e15044696d8d88b580ec59,
-    type: 2}
-  m_PrefabInternal: {fileID: 1045128088}
 --- !u!1 &1063507784
 GameObject:
   m_ObjectHideFlags: 0
@@ -7376,7 +7376,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 867697004}
-  - {fileID: 1534935749}
+  - {fileID: 1858673590}
   - {fileID: 149287409}
   - {fileID: 1846780122}
   m_Father: {fileID: 1763058697}
@@ -8853,8 +8853,8 @@ MonoBehaviour:
   - 'rendering Imported targets : 1'
   - LoadDataSet ()TargetLock
   needsTidying: 1
-  tidyCycleInSeconds: 2
-  MaxMessages: 15
+  tidyCycleInSeconds: 1
+  MaxMessages: 20
   ui_text: {fileID: 393833060}
   UI_sensorslist: {fileID: 1937826487}
 --- !u!1 &1489601727
@@ -9190,11 +9190,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1509562236}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1534935749 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4343276655535566, guid: 876ecc20f2e15044696d8d88b580ec59,
-    type: 2}
-  m_PrefabInternal: {fileID: 864844377}
 --- !u!1 &1535475073
 GameObject:
   m_ObjectHideFlags: 0
@@ -9491,7 +9486,7 @@ Transform:
   m_LocalScale: {x: 0.12065, y: 0.12065, z: 0.12065}
   m_Children:
   - {fileID: 1434204440}
-  - {fileID: 1045128089}
+  - {fileID: 468830204}
   - {fileID: 1956104784}
   - {fileID: 1067290111}
   - {fileID: 1179326342}
@@ -10996,6 +10991,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1850538336}
+--- !u!4 &1858673590 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4282731088954588, guid: 876ecc20f2e15044696d8d88b580ec59,
+    type: 2}
+  m_PrefabInternal: {fileID: 864844377}
 --- !u!1 &1869650213
 GameObject:
   m_ObjectHideFlags: 0

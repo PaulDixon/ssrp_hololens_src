@@ -9,10 +9,10 @@ public class SSRP_hud_controller : MonoBehaviour
 
 
     public List<int> deviceCounter;
-    public List<string> info;
+    public List<string> info = new List<string>();
     public bool needsTidying = false;
-    public int tidyCycleInSeconds = 4;
-    public int MaxMessages = 15;
+    public int tidyCycleInSeconds;
+    public int MaxMessages;
     public Text ui_text;
     public Text UI_sensorslist;
     private bool isUI = false;
@@ -23,31 +23,33 @@ public class SSRP_hud_controller : MonoBehaviour
     void Start()
     {
         boss = PersistantManager.Instance;
-        info = new List<string>();
+       
         if (ui_text != null)
         {
             isUI = true;
         }
+        StartCoroutine(houseKeeping());
     }
 
     private IEnumerator houseKeeping()
     {
-
-        while (needsTidying && tidyCycleInSeconds >= 1)
+        yield return new WaitForSeconds(tidyCycleInSeconds);
+                
+        if (info.Count > 0)
         {
-            if (info.Count > 0)
-            {
-                info.RemoveAt(0);
-
-                yield return new WaitForSeconds(tidyCycleInSeconds);
-            }
-            else
-            {
-                needsTidying = false;
-
-            }
+            info.RemoveAt(0);
         }
-        //renderText();
+        else
+        {
+            needsTidying = false;
+        }
+        
+        if (needsTidying)
+        { 
+            StartCoroutine(houseKeeping());
+        }
+
+
     }
 
 
@@ -60,15 +62,17 @@ public class SSRP_hud_controller : MonoBehaviour
 
     public void renderText()
     {
+
         if (isUI)
         {
+            List<string> temp = info;
             string display = "";
             int i = 0;
-            int m = info.Count;
+            int m = temp.Count;
             for (i = 0; i < m; i++)
             {
                 // display += info[i] + " [" + i + "]\n";
-                display += info[i] + " -\n";
+                display += temp[i] + " -\n";
             }
             ui_text.text = display;
         }
@@ -86,11 +90,13 @@ public class SSRP_hud_controller : MonoBehaviour
         }
         info.Add(str);
         renderText();
+        
         if (!needsTidying)
-        {
+        { 
             needsTidying = true;
             StartCoroutine(houseKeeping());
         }
+
 
 
     }
