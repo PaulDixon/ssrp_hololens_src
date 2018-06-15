@@ -315,6 +315,7 @@
     <Compile Include="Assets\_ssrp\scripts\PersistantManager.cs" />
     <Compile Include="Assets\_ssrp\scripts\SSRP_Attribute_Controller.cs" />
     <Compile Include="Assets\_ssrp\scripts\SSRP_context_element_controller.cs" />
+    <Compile Include="Assets\_ssrp\scripts\ssrp_ContextAnchor.cs" />
     <Compile Include="Assets\_ssrp\scripts\SSRP_entity_manager.cs" />
     <Compile Include="Assets\_ssrp\scripts\SSRP_hud_controller.cs" />
     <Compile Include="Assets\_ssrp\scripts\SSRP_metaData_controller.cs" />
@@ -830,7 +831,6 @@
     <Compile Include="Assets\HoloToolkit\UX\Scripts\UICollection.cs" />
     <Compile Include="Assets\HoloToolkit\UX\Scripts\UsabilityScaler.cs" />
     <Compile Include="Assets\HoloToolkit\UX\Scripts\UsabilityUtilities.cs" />
-    <Compile Include="Assets\ssrp_ContextAnchor.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultInitializationErrorHandler.cs" />
     <Compile Include="Assets\Vuforia\Scripts\DefaultTrackableEventHandler.cs" />
   </ItemGroup>
