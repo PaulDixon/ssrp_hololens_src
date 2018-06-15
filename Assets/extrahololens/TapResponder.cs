@@ -28,6 +28,7 @@ namespace HoloToolkit.Unity.InputModule.Tests
             {
                 boss = PersistantManager.Instance;
                 boss.hud.addText("Object has no SSRP_context_element_controller to Open/Close ");
+                boss.hud.addText("Go look for A sensesmart logo ");
             }
         }
     }

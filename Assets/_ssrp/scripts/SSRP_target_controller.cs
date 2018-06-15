@@ -189,7 +189,7 @@ public class SSRP_target_controller : MonoBehaviour
             boss.hud.addText("test against " + contextElement_currentList.Count + " local sensors" ) ;
             foreach (SSRP_contextResponse cr in contextElement_currentList)
             {
-                boss.hud.addText("sensor = [" + (string)cr.marker_name+"]");
+               // boss.hud.addText("sensor = [" + (string)cr.marker_name+"]");
             }
 
                 SSRP_contextResponse hit_response = null;
@@ -200,7 +200,7 @@ public class SSRP_target_controller : MonoBehaviour
                     
                 if (string.Compare((string) tb.TrackableName, (string)cr.marker_name) == 0)
                 {
-                    boss.hud.addText(cr.marker_name +": hit");
+                    
                     hit_response = cr;
                         
                 }
@@ -213,7 +213,7 @@ public class SSRP_target_controller : MonoBehaviour
             }
             if (tb.name != "New Game Object")
             {
-                boss.hud.addText("tb.name = " + tb.name);
+            //    boss.hud.addText("tb.name = " + tb.name);
                 return;
             }
 
@@ -230,6 +230,7 @@ public class SSRP_target_controller : MonoBehaviour
             //SSRP_ContextElement el = 
             // change generic name to include trackable name
             tb.gameObject.name = ++foundCounter + ":DynamicImageTarget-" + tb.TrackableName;
+            boss.hud.addText("[" + tb.TrackableName + "] && [" + hit_response.contextElement.id + "]: MARKER BOUND TO SENSOR  ");
 
             // add additional script components for trackable
             tb.gameObject.AddComponent<DefaultTrackableEventHandler>();

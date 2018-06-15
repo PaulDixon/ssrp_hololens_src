@@ -46,6 +46,8 @@ public class interactionListener : MonoBehaviour {
             if (child_controller == null)
             {
                 boss.hud.addText("no SSRP_context_element_controller found on " + name + " from " + device + " iteraction ");
+                boss.hud.addText("Go look for A sensesmart logo ");
+
                 return;
             }
             else
