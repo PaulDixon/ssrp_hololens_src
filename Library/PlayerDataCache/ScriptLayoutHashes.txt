@@ -1,6 +1,6 @@
 Metro
 PlayerPath?
-C:/Users/vr-user/Documents/pd_dev/GitHubRepo/dep
+C:/Users/vr-user/Documents/pd_dev/GitHubRepo/ssrp_deploy
 SceneListBegin?
 Assets/_ssrp/_scenes/ssrp_complete.unity
 SceneListEnd?
